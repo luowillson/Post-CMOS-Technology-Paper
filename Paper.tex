@@ -376,6 +376,33 @@ across an entire chip. In addition to manufacturing issues there
 still lacks a way of seamlessly integrating with traditional silicon
 CMOS components. Overcoming these challenges is crucial to achieving 
 
+\subsection{Personal Thoughts}
+Overall CNFETs seem like a very promising area where there could be 
+a lot of development. Since it doesn't deviate signficantly from 
+traditional transistors it can be implemented into already made 
+computing schemes making it more appealing for companies to invest 
+in. It is much more likely for top fabrication companies like 
+TSMC or Intel to look into CNFETs than some other technologies
+that present completely new computing paradigms. The progress made in 
+CNFETs has also been extremely promising as demonstrated by MIT's 
+RV16X-NANO computer. The milestone to already have demonstrated 
+such funcionality proves that this is a technology that is really 
+feasible for the future. Graphene is also an area that has a good 
+amount of research going into it so carbon nanotubes in general 
+are sure to get more attention. 
+
+With new chips there is a greater emphasis on chiplet technology 
+as well as 3D integration. Again, CNFETs look very promising in that
+area. Along with that, the medical industry is also constantly looking 
+for flexible devices that can better interact with the human body 
+which is another area where CNFETs shine in. 
+
+Though there are still some big hurdles to overcome in manufacturing 
+CNFETs at large scales and reliably I believe with just a few more 
+breakthroughs they can become quite mainstream where large amounts 
+of investments will be poured into CNFETs and accelerate their development 
+greatly. 
+
 \section{Spintronics: Beyond Charge-Based Computing}
 Traditional electronics primarily rely on the charge of electrons 
 to process and store information. 1s and 0s are coded by high and 
@@ -463,6 +490,30 @@ devices.
 \subsection{Memristor Based Threshold Logic Gate (TLG)}
 Beyond their abilities to store memory, memristors are perfectly suited 
 for implementing threshold logic gates. 
+
+\subsection{Threshold Logic Gate}
+A threshold logic gate is a gate that outputs a high signal if 
+an input signal surpasses a certain threshold and outputs low 
+otherwise. To give an example simply, imagine the input had a range 
+of voltages from 0-9 and there is a threshold voltage of 5. Any
+input voltage above high will output a binary high signal from the 
+gate and any voltage below will output a low signal. A TLG 
+is oftentimes also used to analyze a weighted sum from its inputs 
+and see if that is above the threshold. 
+
+With these characteristics a TLG can implement any linearly separable
+function. This means that for a given function, there exists a 
+dividing line (or hyperplane in higher dimensions) that would 
+separate all input combinations to one of two distinct output 
+groups. 
+
+This also means that a single TLG can implement a boolean function 
+that would require multiple logic gates to realize. For example, a 
+majority gate would require at least 4 NAND gates to be realized in 
+traditional CMOS design while it can be implemented in just one TLG. 
+
+\subsubsection{Memristor-Based Threshold Logic Gate}
+da
 
 \section{Comparative Analysis}
 
