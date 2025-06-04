@@ -491,7 +491,7 @@ devices.
 Beyond their abilities to store memory, memristors are perfectly suited 
 for implementing threshold logic gates. 
 
-\subsection{Threshold Logic Gate}
+\subsubsection{Threshold Logic Gate}
 A threshold logic gate is a gate that outputs a high signal if 
 an input signal surpasses a certain threshold and outputs low 
 otherwise. To give an example simply, imagine the input had a range 
@@ -513,6 +513,39 @@ majority gate would require at least 4 NAND gates to be realized in
 traditional CMOS design while it can be implemented in just one TLG. 
 
 \subsubsection{Memristor-Based Threshold Logic Gate}
+Memristors are ideal for TLG implementation since their variable 
+resistance can act as programmable weights. A common architecture
+for a memristor based TLG implements a hybrid architecture with 
+memristors and traditional CMOS components into two main parts:
+a differential part and a sensor part. 
+
+The differential part is where a memristor is actually used. Each 
+memristor is paired with a transistor known as a 1T1M array.
+Here an input and reference threshold signal is taken in. When a 
+voltage is then applied as the input current flows through the
+memristor. The memristor here acts as a knob that controls how much 
+current is passed through this differential part. This part 
+can also be switched off when not in use to save power. 
+
+The current from the differential part then goes to the sensor. 
+The sensor compares a combined current coming from either one or 
+multiple differential parts and sees if its above the threshold. 
+Based on this comparison either a 1 or 0 is outputted indicating 
+whether the sum of the weights have surpassed the threshold. 
+%\cite here%
+
+\subsubsection{Challenges}
+Despite the theoretical efficiency of memristor based TLGs, 
+their practical implementation still face significant challenges. 
+Fabrication is still very difficult and there are no EDA tools 
+compatible with designing devices made of memristors TLGs. 
+
+\subsection{Hardware Implementation of Memristor-Based Artificial Neural Networks}
+Beyond logic gates, memristors are particularly compelling for 
+neural networks due to their inherent ability to perform efficient 
+vector matrix multiplicaton which serves as the backbone of 
+modern neural networks. 
+
 
 
 \section{Comparative Analysis}
