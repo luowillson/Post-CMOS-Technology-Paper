@@ -546,7 +546,57 @@ neural networks due to their inherent ability to perform efficient
 vector matrix multiplicaton which serves as the backbone of 
 modern neural networks. 
 
+\subsubsection{Vector-Matrix Multiplication (VMM) Core}
+The central component in the vector-matrix multiplication core 
+is the memristor crossbar array. In this array, memrisotrs are placed
+at the crosspoints of a grid of wires. Voltages are inputted through
+the rows of the wire and the at each cross point the current is 
+found through Ohm's Law. Kirchoff's current law then sums up all the 
+currents through the vertical beams and the sum of these currents 
+is the result of the vector multiplication. Mathematically the
+product as a current is 
+\[I_j = \Sigma_iV_iG_{ij}.\]
 
+These raw analog values are then fed to a analog to digital converter
+(ADC) to then turn into digital magnitudes. Finally, an activation
+function (often a sigmoid or ReLU) is applied to these results to 
+introduce nonlinearities, making the output resemble various desired 
+distributions. 
+\begin{figure}[H]
+  \centering
+  \includegraphics[scale = 0.3]{images/Neural-network-implementation-using-memristor-crossbar-arrays-a-shows-a-conventional.png}
+  \caption{Memristor crossbar array}
+\end{figure}
+
+\subsubsection{Demonstrations of Memristor Neural Networks}
+Notably, the University of Michigan created a memristor based 
+computer that utilized a 54x108 memristor crossbar array. 
+With this computer they were able to create a single layer perception 
+that classified a 5x5 array of pixels, identifying the greek letters 
+drawn in the 25 pixel array with 100\% accuracy. In addition, they 
+implemented a two layer neural network that found commonalities and 
+differences in breast cancer screenings, correctly classifying 
+the cases as benign or malignant with 94.6\% accuracy.
+%cite here%
+
+\subsection{Challenges to Implementing Memristors}
+Despite their demonstrated potential, several critical challenges still
+prevent the widespread and practical use of memristors. Among these challenges
+the most prominent ones are the lack of reliable manufacturing ability,
+resistance drift, and non-linear resistance programming. 
+
+Memristors are still unable to be manufactured reliably and the 
+the cost of metal alloys is much more than that of silicon. Manufacturing 
+metals to these scales is also much harder. These manufactured devices also 
+suffer from drift where the programmed resistance can change over time 
+to deviations in the environment like temperature. Non-linearities 
+in how the resistance is programmed also make it extremely difficult to
+program large scale memristor arrays. Supposed identitical memristors 
+could require different voltage thresholds or to be applied for varying 
+amount of times to program them to have the same resistance. 
+
+\subsection{Personal Thoughts}
+With the advent of 
 
 \section{Comparative Analysis}
 
