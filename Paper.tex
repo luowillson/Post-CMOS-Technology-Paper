@@ -43,7 +43,7 @@
 %% for your publication.
 %%
 %%
-\documentclass[sigconf,authordraft]{acmart}
+\documentclass[sigconf]{acmart}
 \usepackage{float}
 \usepackage{placeins}
 \title{Post CMOS technologies: An Overview and Analysis}
@@ -59,13 +59,9 @@
 %% the commands and values with those provided to you when you
 %% complete the rights form.
 \setcopyright{acmlicensed}
-\copyrightyear{2018}
-\acmYear{2018}
-\acmDOI{XXXXXXX.XXXXXXX}
+\copyrightyear{2025}
+\acmYear{2025}
 %% These commands are for a PROCEEDINGS abstract or paper.
-\acmConference[Conference acronym 'XX]{Make sure to enter the correct
-  conference title from your rights confirmation email}{June 03--05,
-  2018}{Woodstock, NY}
 %%
 %%  Uncomment \acmBooktitle if the title of the proceedings is different
 %%  from ``Proceedings of ...''!
@@ -173,8 +169,9 @@
 %%
 %% Keywords. The author(s) should pick words that accurately describe
 %% the work being presented. Separate the keywords with commas.
-\keywords{Do, Not, Us, This, Code, Put, the, Correct, Terms, for,
-  Your, Paper}
+\keywords{Post-CMOS Technology, Carbon Nanotubes, CNFETs, Spintronics, MESO Devices, 
+Memristors, Crossbar Array, In-Memory Computing, Vector Matrix Multiplication, Majority Gate,
+3D Integration, Threshold Logic, Analog Computing}
 %% A "teaser" image appears between the author and affiliation
 %% information and the body of the document, and typically spans the
 %% page.
@@ -294,7 +291,7 @@ known, possessing exceptional tensile strength and elastic
 modulus. Moreover, they are remarkably flexible, capable of 
 withstanding considerable mechanical strain without fracturing. 
 This flexibility is particularly advantageous for emerging 
-flexible electronics and 3D integration. 
+flexible electronics and 3D integration \cite{appenzeller2008carbon}. 
 
 \subsection{Carbon Nanotube Field Effect Transistors (CNFETs)}
 The ability of semiconductor CNTs to conduct extremely effectively 
@@ -324,13 +321,13 @@ based FETs:
   \item Material Flexibility: The mechanical flexibility of CNTs 
   enables the development of bendable electronics and facilitates 
   potential three-dimensional chip stacking and integration, 
-  offering new avenues for compact and innovative designs.
+  offering new avenues for compact and innovative designs \cite{javey2003ballistic}.
 \end{itemize}
 
 \begin{figure}[h]
   \centering
   \includegraphics[width = \linewidth]{images/Screenshot 2025-05-26 at 8.51.02 PM.png}
-  \caption{Diagram of CNFET as combination of MOSFET and FinFET}
+  \caption{Diagram of CNFET as combination of MOSFET and FinFET (Image from \cite{appenzeller2008carbon})}
 \end{figure}
 
 \subsection{Logic Operations}
@@ -354,11 +351,12 @@ On this microprocessor they were able to implement many standard logic
 blocks like multiplexers, arithmetic logic units, decoders, and encoders. 
 Most notably, they were able to execute the famous "Hello World"
 program.
+\cite{hills2019modern}
 
 \begin{figure}
   \centering
   \includegraphics[width = \linewidth]{images/Screenshot 2025-05-26 at 8.56.27 PM.png}
-  \caption{Architecture and Design of RV16X-NANO}
+  \caption{Architecture and Design of RV16X-NANO (Image from \cite{hills2019modern})}
 \end{figure}
 
 \subsection{Challenges in CNFET Fabrication and Integration}
@@ -374,7 +372,10 @@ introduce defects and variability across a wafer. This includes variation
 in CNFET density and contact resistance leading to non uniform performance
 across an entire chip. In addition to manufacturing issues there 
 still lacks a way of seamlessly integrating with traditional silicon
-CMOS components. Overcoming these challenges is crucial to achieving 
+CMOS components\cite{hills2019modern}.
+Overcoming these challenges is crucial to achieving reliable CNFETs
+capable of making more advanced computers. 
+
 
 \subsection{Personal Thoughts}
 Overall CNFETs seem like a very promising area where there could be 
@@ -444,15 +445,92 @@ switching where you can control a materials magnetic properties by applying
 an electric field. For instance switching the spin state with the help of 
 an electric field.
 
-\subsubsection{Principle of Operation}
-An input logic is provided through a voltage and electric field which 
-will set the magnetization in a magnet to be in a certain direction. This 
-converts an electrical input into a magnetic state where the spin state 
-can now be used to represent the binary 0 or 1. 
+\begin{figure}[h]
+  \centering
+  \includegraphics[width = \linewidth]{images/41586_2018_770_Fig2_HTML.png}
+  \caption{MESO Spin Device Diagram illustrating various operating mechanisms (image from 
+  \cite{manipatruni2019scalable})}
+\end{figure}
 
-To then generate an output a current is injected into the nanomagnet 
-which will cause the output current from the nanomagnet to all have 
-the same 
+\subsubsection{Principle of Operation}
+The input logic is provided as an electrical charge or voltage. 
+This input is applied to a magnetoelectric switching node, which 
+can change the magnetization direction of the nanomagnet using a 
+voltage. This effectively converts the electrical input into a 
+stable magnetic state (representing a 0 or 1 based on its up or 
+down spin), which represents the logic state. This form of 
+"collective state switching" offers superior switching energy, 
+lower operating voltage, and enhanced logic density compared to 
+charge-only approaches.
+
+The output logic is then generated by supplying a current into 
+the device. The magnetic state of the nanomagnet then determines 
+sets all the ejected electrons to be strongly polarized due to spin
+orbit coupling. This spin is then converted back into a charge 
+or voltage driving the subsequent logic gates. 
+
+\subsubsection{Logic Implementation and Architecture}
+The key feature enabling logic implementation with MESO is due to 
+their ability to implement majority gates and inverters. MESO devices
+inherently suppport majority logic because of the way multiple 
+charge inputs can be summed together to influence the spin state
+of a nanomagnet. If the spin of the currents sum to be above a 
+certain threshold then that will be enough to change the spin state
+of the nanomagnet. 
+
+An inverter can then be created by having a nanomagnet affect the 
+spin polarization of a wire. If a wire is placed close to a nanomagnet, 
+the nanomagnet will act as a sort of a filter. The nanomagnet 
+will affect the wire is such a way that electrons with the same spin 
+as the magnet will be attracted to the nanomagnet while electrons with 
+opposite spin are able to pass through. This then effectively 
+outputs a spin state that is opposite to the spin state of 
+the nanomagnet creating an inverter. 
+
+These devices can then be cascaded together to perform more advanced 
+logic operations. While there still hasn't been much 
+substantial demonstration of this technology the theory is there 
+and complicated logic operations are definitely possible.
+\cite{manipatruni2019scalable}
+
+\subsection{Current Challenges in Spintronics}
+Despite the significant theoretical advantages of MESO devices, there 
+still stands considerable challengs to it's implementation. The primary 
+hurdle still lies in the fact that these devices cannot be produced reliably. 
+Temperature fluctuations also pose a significant threat to MESO devices
+as shifts in temperature can alter the spin states of the devices. 
+
+\subsection{Personal Thoughts}
+While spintronics has a lot of promising benefits with its low power 
+and in memory compute, the possibility of an actual computer being 
+made with spintronics seems extremeley slim. The current state 
+that devices can be manufactured will be nowhere close to the 
+reliability needed for spintronics computers. Even in the case that 
+an actual computer can be made, it will definitely not be applicable 
+to home personal use due to the sensitivity of the devices and how easily 
+the spin could change. 
+
+The operating principles behind spintronics inherently seems very
+volatile. Much like quantum computing, for it to be viable I think 
+extensive error correction algorithms will have to be used that will 
+take up a signficant amount of the compute available. The principles 
+also make it seem very difficult for the devices to be manufactured at 
+a scale comparable to current transistors. I think if spintronics 
+logic is to become a thing there may need to be different ways to 
+perform logic that is more robust and error tolerant and also perhaps 
+a bit more simple. 
+
+There is also not much action if at all happening in industry 
+related to spintronics. Companies are still unwilling to invest 
+in which is a big indicator in how far off from deployment the 
+technology still is. 
+
+Overall, I don't think spintronics will be very viable in performing 
+digital logic operations. It may have big potential in spaces like 
+memory, but just for logic I don't see it getting very far. If we don't 
+see any big advancements in the next 3-5 years I think the research 
+and investment around this technology will fall off and people 
+will invest all resources to quantum computing. 
 
 \section{Memristors}
 The Von Neumann architecture, which physically separates the processing 
@@ -482,7 +560,7 @@ and higher density integration. Their ability to store memory even
 when power is switched enables lower power consumption. Since they can 
 also be programmed into continuous resistance values they have the 
 ability to store more than just 1 bit per device. Recent experiments
-have shown one memristor being able to store 5-7 bits. Advances 
+have shown one memristor being able to store 5-7 bits \cite{papandroulidakis2019practical}. Advances 
 in memristors have also demonstrated a high level of CMOS compatability 
 allowing them to be used in hybrid structures with traditional CMOS 
 devices. 
@@ -512,6 +590,12 @@ that would require multiple logic gates to realize. For example, a
 majority gate would require at least 4 NAND gates to be realized in 
 traditional CMOS design while it can be implemented in just one TLG. 
 
+\begin{figure}
+  \centering
+  \includegraphics[width = \linewidth]{images/Linearly_separable_red-blue_cropped_.svg.png}
+  \caption{Figure illustrating linearly separable function}
+\end{figure}
+
 \subsubsection{Memristor-Based Threshold Logic Gate}
 Memristors are ideal for TLG implementation since their variable 
 resistance can act as programmable weights. A common architecture
@@ -532,13 +616,13 @@ The sensor compares a combined current coming from either one or
 multiple differential parts and sees if its above the threshold. 
 Based on this comparison either a 1 or 0 is outputted indicating 
 whether the sum of the weights have surpassed the threshold. 
-%\cite here%
+\cite{papandroulidakis2019practical}
 
 \subsubsection{Challenges}
 Despite the theoretical efficiency of memristor based TLGs, 
 their practical implementation still face significant challenges. 
 Fabrication is still very difficult and there are no EDA tools 
-compatible with designing devices made of memristors TLGs. 
+compatible with designing devices made of memristors TLGs \cite{papandroulidakis2019practical}. 
 
 \subsection{Hardware Implementation of Memristor-Based Artificial Neural Networks}
 Beyond logic gates, memristors are particularly compelling for 
@@ -561,11 +645,11 @@ These raw analog values are then fed to a analog to digital converter
 (ADC) to then turn into digital magnitudes. Finally, an activation
 function (often a sigmoid or ReLU) is applied to these results to 
 introduce nonlinearities, making the output resemble various desired 
-distributions. 
+distributions \cite{aguirre2024hardware}. 
 \begin{figure}[H]
   \centering
-  \includegraphics[scale = 0.3]{images/Neural-network-implementation-using-memristor-crossbar-arrays-a-shows-a-conventional.png}
-  \caption{Memristor crossbar array}
+  \includegraphics[width = \linewidth]{images/Neural-network-implementation-using-memristor-crossbar-arrays-a-shows-a-conventional.png}
+  \caption{Memristor crossbar array (image from \cite{hassan2018real})}
 \end{figure}
 
 \subsubsection{Demonstrations of Memristor Neural Networks}
@@ -577,7 +661,14 @@ drawn in the 25 pixel array with 100\% accuracy. In addition, they
 implemented a two layer neural network that found commonalities and 
 differences in breast cancer screenings, correctly classifying 
 the cases as benign or malignant with 94.6\% accuracy.
-%cite here%
+\cite{cai2019fully}
+
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width = \linewidth]{images/Screenshot 2025-06-07 at 8.22.50 PM.png}
+  \caption{Illustration of multiple advances achieved by UMich memristor computer (image from \cite{cai2019fully})}
+\end{figure}
 
 \subsection{Challenges to Implementing Memristors}
 Despite their demonstrated potential, several critical challenges still
@@ -596,384 +687,195 @@ could require different voltage thresholds or to be applied for varying
 amount of times to program them to have the same resistance. 
 
 \subsection{Personal Thoughts}
-With the advent of 
+With the advent of AI and the need for massive amounts of compute 
+I see memristors having a big potential to fill this opportunity 
+to create more powerful and efficient asics for machine learning. 
+The development in recent years has also been pretty promising with 
+UMich demonstrating the memristor computer implementing a 
+single layer perceptron. 
+
+There also seems to be quite a few startups in the space
+indicating that memristors may have gotten to the point where 
+industry is willing to invest in them. With all the AI startup 
+hype these companies are getting massive amounts of money 
+and it will boost these companies and the overall memristor fields 
+capability to make a breakthrough. 
+
+Outside of making neural networks, I don't think memristors have 
+that much viability. The current methods for creating logic gates 
+with memristors need quite a lot of traditional CMOS technology to 
+support it that it just seems like too much effort for not enough 
+benefit. The in memory compute promise also doesn't look too strong
+yet and until there can be a way to store significant amounts of memory with 
+memristors in the compute block I don't see general purpose memristor 
+computers coming anytime soon. 
 
 \section{Comparative Analysis}
+This section will then dive into my personal opinions on how these 
+technologies compare with each other weighing their respective 
+weaknesses and strengths, exploring potential synergies, and consider 
+the current landscape of compute and where money and effort is 
+being directed. 
+
+The three technologies highlighted above are all among the most 
+researched post CMOS technologies in the past few decades. However, 
+some definitely have more promise than others. There can 
+only be a few winners, and inevitably some will have to fade away 
+while others will enjoy widespread adoption. So what exactly are the 
+technologies that stand out and in what fields do they have potential. 
+
+First, I will go over which technology I don't think will have 
+widespread adoption. That technology would have to be spintronics. 
+The main appeal of spintronics is its ability to perform in memory compute. 
+This idea is definitely appealing as one of the main bottlenecks that now arise 
+scaling compute is the ability to move information to and from memory and compute. 
+Spintronics definitely does have its advantanges in this area, however I feel like 
+memristors also guarantee this promise in a much more simple and easily conceivable way. 
+
+On the logic side, though spintronics does promise more capable logic abilities with 
+the potential of representing more than 2 states in a single bit, the implementation 
+just seems too complicated to become scalable. Of course it sounds nice to be able 
+to implement more states, but if you're not able to scale this than it's not really 
+of any use. Even if scalability is achieved the operating principles behind spintronics 
+logic like storing spin states in a nanomagnet are too volatile to be used in anything 
+outside of specialized supercomputers. 
+
+On top of all this, the whole field didn't seem to have too many tangible achievements in 
+recent times. Research and theory is great, but if none of it can be turned into an actual 
+demonstrable product then it really is just theorizing. Unlike the other two technologies 
+that have all produced computers that have been able to accomplish some simple and basic tasks
+spintronics has not done any of this. 
+
+The technology also doesn't appeal much to the landscape of the industry. With AI being 
+all the craze and where all the investment is going, spintroncis doesn't seemed to 
+be involved in any of it. 
+
+Carbon nanotubes and memristors on the other hand have much more potential while also 
+demonstrating significant results already. Their respective strengths in creating 
+hyper-efficient transistors and enabling powerful in-memory computing align directly
+with the primary challenges and investment trends in the industry today, making them 
+the most compelling candidates to lead the post-CMOS era.
+
+Carbon nanotubes in particular are extremely promising. The benefits they can provide 
+are a huge advantage of the transistors we already have. Even though they don't 
+present a whole new computing paradigm they still amount to a significant improvement 
+in the ability to scale compute. Their ballistic transport properties also make them 
+very compelling as it presents ways to reduce power scaling, one of the main factors 
+limiting our ability to add more transistors on a chip. 
+
+The results that have already been realized using CNFETs are nothing short of incredible. 
+With the MIT Medical Electronic Device Realization center already building a complete 
+16 bit computer the promise of carbon nanotubes is no longer just in theory. It is 
+knocking on the doorstep ready to take computing to the next step
+
+Because they are not a completely new computing paradigm that also makes it quite appealing. 
+With technologies like spintronics and memristors presenting completely new ways to compute
+the industry may become hesitant to switch and it will take a significant amount of effort
+for everyone to adopt to something so different. Carbon nanotubes on the other hand can operate
+just like normal transistors making the transition much more seamless. The difficulty then just 
+lies in the fabrication while the rest of the industry can stay more or less the same. 
+
+Perhaps one of the most transformative advantages of carbon nanotubes is their potential 
+for true 3D integration. Unlike silicon, which requires high-temperature processing that 
+prevents stacking active layers, CNTs can be fabricated at low temperatures. This opens the 
+door to building processors vertically, layer by layer, leading to an unprecedented density
+of compute and memory interwoven in a single chip. This positions CNTs as the heir apparent 
+to silicon for processing tasks.
+
+Finally, memristors who don't have as much potential as carbon nanotubes in the world 
+of general have massive potential in the world of specialized AI chips. Their inherent 
+ability to do matrix multiplication makes them especially appealing in this day and age 
+where training the best AI is what has captivated governments around the world. 
+
+Just like carbon nanotubes, the results that have already been shown using memristors have 
+been nothing short of incredible. The University of Michigan implmeneting a single layer 
+perceptron also demonstrates that memristors are also not just something of theory. If these 
+results can be demonstrated on progressively larger scale models then they have a serious 
+chance of taking over the AI industry and becoming the dominant way of making chips in
+that space. 
+
+All of this is without even mentioning their potential for in memory compute. Just like 
+spintronics, they have the ability to combine memory and compute in the same module and 
+if this can be utilized in addition to their matrix multiplication then memristors also 
+have a potential chance of brekaing into the general compute space. 
+
+While they are also still quite volatile, just like spintronics, the advancement of 
+memristors to become consistent and scalable seem much easier than nanomagnets. Carbon 
+nanotubes still stand a step above them in terms of reliability and scalability and are 
+ahead in manufacturing maturity. 
+
+In the final analysis, the race to succeed CMOS may not produce a single winner, 
+but rather a new, specialized hierarchy of technologies. While spintronics appears to 
+be a distant prospect due to fundamental hurdles, the paths for carbon nanotubes and 
+memristors are becoming increasingly clear. Carbon nanotubes stand out as the most 
+pragmatic and powerful successor for general-purpose logic, promising to extend the 
+paradigm of Moore's Law through superior efficiency and 3D integration. They represent 
+the perfection of the processor as we know it.
+
+However, perfecting the processor alone is not enough. The future of computing, 
+particularly in the age of AI, hinges on solving the data bottleneck. This is where 
+memristors, with their profound potential for in-memory and analog computing, will 
+dominate. There is a possibility of a hybrid future where efficient logic chips built 
+from carbon nanotubes work in seamless integration with memristor based accelerators 
+and memory modules. Dividing the labor and letting each technology excel at its 
+inherents strengths present a logical and promising path forward. 
+
 
 \section{Conclusion}
+The relentless march of progress in computing has driven 
+silicon-based CMOS technology to its fundamental physical limits, 
+necessitating a paradigm shift towards novel materials and 
+architectural approaches. This paper has explored three 
+cutting-edge technologies—Carbon Nanotubes (CNTs), Spintronics, 
+and Memristors—each offering distinct and powerful solutions to 
+the challenges of performance, power consumption, and 
+architectural bottlenecks inherent in current computing systems.
 
-\section{Acknowledgments}
+Carbon Nanotubes stand as a compelling successor to silicon in 
+transistor technology. Their nanoscale dimensions, exceptional 
+carrier mobility, and superior thermal properties enable the 
+creation of CNFETs that promise higher speeds, lower power 
+consumption, and greater scalability, as evidenced by the 
+development of functional CNFET-based microprocessors. While 
+significant fabrication hurdles related to material purity and 
+manufacturing uniformity remain, the ongoing advancements 
+underscore their potential to extend the capabilities of 
+traditional digital logic.
 
-Authors of any work published by ACM will need to complete a rights
-form. Depending on the kind of work, and the rights management choice
-made by the author, this may be copyright transfer, permission,
-license, or an OA (open access) agreement.
+Spintronics, by harnessing the intrinsic spin of electrons, 
+introduces a revolutionary approach to logic and memory. 
+Magnetoelectric Spin-Orbit (MESO) devices demonstrate the 
+ability to perform ultra-low-power logic operations by converting 
+charge to magnetic states and back, enabling efficient information 
+processing with minimal energy dissipation. The inherent 
+capability to implement majority gates and inverters fundamentally 
+redefines logic design, paving the way for highly dense and 
+energy-efficient circuits. Overcoming challenges in gate 
+reliability and material integration will be crucial for 
+widespread adoption.
 
-Regardless of the rights management choice, the author will receive a
-copy of the completed rights form once it has been submitted. This
-form contains \LaTeX\ commands that must be copied into the source
-document. When the document source is compiled, these commands and
-their parameters add formatted text to several areas of the final
-document:
-\begin{itemize}
-\item the ``ACM Reference Format'' text on the first page.
-\item the ``rights management'' text on the first page.
-\item the conference information in the page header(s).
-\end{itemize}
+Finally, Memristors present a transformative solution to the 
+enduring Von Neumann bottleneck by merging memory and processing 
+capabilities within a single device. Their unique properties, 
+including nanoscale dimensions, non-volatility, and multi-bit 
+storage, make them ideal for neuromorphic computing and in-memory 
+acceleration of Artificial Neural Networks. The successful 
+implementation of memristor-based threshold logic gates and 
+complex neural networks showcases their profound potential to 
+enable highly efficient, brain-inspired architectures, despite 
+ongoing challenges in manufacturing consistency and programming 
+precision.
 
-Rights information is unique to the work; if you are preparing several
-works for an event, make sure to use the correct set of commands with
-each of the works.
-
-The ACM Reference Format text is required for all articles over one
-page in length, and is optional for one-page articles (abstracts).
-
-\section{CCS Concepts and User-Defined Keywords}
-
-Two elements of the ``acmart'' document class provide powerful
-taxonomic tools for you to help readers find your work in an online
-search.
-
-The ACM Computing Classification System ---
-\url{https://www.acm.org/publications/class-2012} --- is a set of
-classifiers and concepts that describe the computing
-discipline. Authors can select entries from this classification
-system, via \url{https://dl.acm.org/ccs/ccs.cfm}, and generate the
-commands to be included in the \LaTeX\ source.
-
-User-defined keywords are a comma-separated list of words and phrases
-of the authors' choosing, providing a more flexible way of describing
-the research being presented.
-
-CCS concepts and user-defined keywords are required for for all
-articles over two pages in length, and are optional for one- and
-two-page articles (or abstracts).
-
-\section{Sectioning Commands}
-
-Your work should use standard \LaTeX\ sectioning commands:
-\verb|\section|, \verb|\subsection|, \verb|\subsubsection|,
-\verb|\paragraph|, and \verb|\subparagraph|. The sectioning levels up to
-\verb|\subsusection| should be numbered; do not remove the numbering
-from the commands.
-
-Simulating a sectioning command by setting the first word or words of
-a paragraph in boldface or italicized text is {\bfseries not allowed.}
-
-Below are examples of sectioning commands.
-
-\subsection{Subsection}
-\label{sec:subsection}
-
-This is a subsection.
-
-\subsubsection{Subsubsection}
-\label{sec:subsubsection}
-
-This is a subsubsection.
-
-\paragraph{Paragraph}
-
-This is a paragraph.
-
-\subparagraph{Subparagraph}
-
-This is a subparagraph.
-
-\section{Tables}
-
-The ``\verb|acmart|'' document class includes the ``\verb|booktabs|''
-package --- \url{https://ctan.org/pkg/booktabs} --- for preparing
-high-quality tables.
-
-Table captions are placed {\itshape above} the table.
-
-Because tables cannot be split across pages, the best placement for
-them is typically the top of the page nearest their initial cite.  To
-ensure this proper ``floating'' placement of tables, use the
-environment \textbf{table} to enclose the table's contents and the
-table caption.  The contents of the table itself must go in the
-\textbf{tabular} environment, to be aligned properly in rows and
-columns, with the desired horizontal and vertical rules.  Again,
-detailed instructions on \textbf{tabular} material are found in the
-\textit{\LaTeX\ User's Guide}.
-
-Immediately following this sentence is the point at which
-Table~\ref{tab:freq} is included in the input file; compare the
-placement of the table here with the table in the printed output of
-this document.
-
-\begin{table}
-  \caption{Frequency of Special Characters}
-  \label{tab:freq}
-  \begin{tabular}{ccl}
-    \toprule
-    Non-English or Math&Frequency&Comments\\
-    \midrule
-    \O & 1 in 1,000& For Swedish names\\
-    $\pi$ & 1 in 5& Common in math\\
-    \$ & 4 in 5 & Used in business\\
-    $\Psi^2_1$ & 1 in 40,000& Unexplained usage\\
-  \bottomrule
-\end{tabular}
-\end{table}
-
-To set a wider table, which takes up the whole width of the page's
-live area, use the environment \textbf{table*} to enclose the table's
-contents and the table caption.  As with a single-column table, this
-wide table will ``float'' to a location deemed more
-desirable. Immediately following this sentence is the point at which
-Table~\ref{tab:commands} is included in the input file; again, it is
-instructive to compare the placement of the table here with the table
-in the printed output of this document.
-
-\begin{table*}
-  \caption{Some Typical Commands}
-  \label{tab:commands}
-  \begin{tabular}{ccl}
-    \toprule
-    Command &A Number & Comments\\
-    \midrule
-    \texttt{{\char'134}author} & 100& Author \\
-    \texttt{{\char'134}table}& 300 & For tables\\
-    \texttt{{\char'134}table*}& 400& For wider tables\\
-    \bottomrule
-  \end{tabular}
-\end{table*}
-
-Always use midrule to separate table header rows from data rows, and
-use it only for this purpose. This enables assistive technologies to
-recognise table headers and support their users in navigating tables
-more easily.
-
-\section{Math Equations}
-You may want to display math equations in three distinct styles:
-inline, numbered or non-numbered display.  Each of the three are
-discussed in the next sections.
-
-\subsection{Inline (In-text) Equations}
-A formula that appears in the running text is called an inline or
-in-text formula.  It is produced by the \textbf{math} environment,
-which can be invoked with the usual
-\texttt{{\char'134}begin\,\ldots{\char'134}end} construction or with
-the short form \texttt{\$\,\ldots\$}. You can use any of the symbols
-and structures, from $\alpha$ to $\omega$, available in
-\LaTeX~\cite{Lamport:LaTeX}; this section will simply show a few
-examples of in-text equations in context. Notice how this equation:
-\begin{math}
-  \lim_{n\rightarrow \infty}x=0
-\end{math},
-set here in in-line math style, looks slightly different when
-set in display style.  (See next section).
-
-\subsection{Display Equations}
-A numbered display equation---one set off by vertical space from the
-text and centered horizontally---is produced by the \textbf{equation}
-environment. An unnumbered display equation is produced by the
-\textbf{displaymath} environment.
-
-Again, in either environment, you can use any of the symbols and
-structures available in \LaTeX\@; this section will just give a couple
-of examples of display equations in context.  First, consider the
-equation, shown as an inline equation above:
-\begin{equation}
-  \lim_{n\rightarrow \infty}x=0
-\end{equation}
-Notice how it is formatted somewhat differently in
-the \textbf{displaymath}
-environment.  Now, we'll enter an unnumbered equation:
-\begin{displaymath}
-  \sum_{i=0}^{\infty} x + 1
-\end{displaymath}
-and follow it with another numbered equation:
-\begin{equation}
-  \sum_{i=0}^{\infty}x_i=\int_{0}^{\pi+2} f
-\end{equation}
-just to demonstrate \LaTeX's able handling of numbering.
-
-\section{Figures}
-
-The ``\verb|figure|'' environment should be used for figures. One or
-more images can be placed within a figure. If your figure contains
-third-party material, you must clearly identify it as such, as shown
-in the example below.
-\begin{figure}[h]
-  \centering
-%   \includegraphics[width=\linewidth]{sample-franklin}
-  \caption{1907 Franklin Model D roadster. Photograph by Harris \&
-    Ewing, Inc. [Public domain], via Wikimedia
-    Commons. (\url{https://goo.gl/VLCRBB}).}
-  \Description{A woman and a girl in white dresses sit in an open car.}
-\end{figure}
-
-Your figures should contain a caption which describes the figure to
-the reader.
-
-Figure captions are placed {\itshape below} the figure.
-
-Every figure should also have a figure description unless it is purely
-decorative. These descriptions convey what’s in the image to someone
-who cannot see it. They are also used by search engine crawlers for
-indexing images, and when images cannot be loaded.
-
-A figure description must be unformatted plain text less than 2000
-characters long (including spaces).  {\bfseries Figure descriptions
-  should not repeat the figure caption – their purpose is to capture
-  important information that is not already provided in the caption or
-  the main text of the paper.} For figures that convey important and
-complex new information, a short text description may not be
-adequate. More complex alternative descriptions can be placed in an
-appendix and referenced in a short figure description. For example,
-provide a data table capturing the information in a bar chart, or a
-structured list representing a graph.  For additional information
-regarding how best to write figure descriptions and why doing this is
-so important, please see
-\url{https://www.acm.org/publications/taps/describing-figures/}.
-
-\subsection{The ``Teaser Figure''}
-
-A ``teaser figure'' is an image, or set of images in one figure, that
-are placed after all author and affiliation information, and before
-the body of the article, spanning the page. If you wish to have such a
-figure in your article, place the command immediately before the
-\verb|\maketitle| command:
-\begin{verbatim}
-  \begin{teaserfigure}
-    \includegraphics[width=\textwidth]{sampleteaser}
-    \caption{figure caption}
-    \Description{figure description}
-  \end{teaserfigure}
-\end{verbatim}
-
-\section{Citations and Bibliographies}
-
-The use of \BibTeX\ for the preparation and formatting of one's
-references is strongly recommended. Authors' names should be complete
---- use full first names (``Donald E. Knuth'') not initials
-(``D. E. Knuth'') --- and the salient identifying features of a
-reference should be included: title, year, volume, number, pages,
-article DOI, etc.
-
-The bibliography is included in your source document with these two
-commands, placed just before the \verb|\end{document}| command:
-\begin{verbatim}
-  \bibliographystyle{ACM-Reference-Format}
-  \bibliography{bibfile}
-\end{verbatim}
-where ``\verb|bibfile|'' is the name, without the ``\verb|.bib|''
-suffix, of the \BibTeX\ file.
-
-Citations and references are numbered by default. A small number of
-ACM publications have citations and references formatted in the
-``author year'' style; for these exceptions, please include this
-command in the {\bfseries preamble} (before the command
-``\verb|\begin{document}|'') of your \LaTeX\ source:
-\begin{verbatim}
-  \citestyle{acmauthoryear}
-\end{verbatim}
-
-
-  Some examples.  A paginated journal article \cite{Abril07}, an
-  enumerated journal article \cite{Cohen07}, a reference to an entire
-  issue \cite{JCohen96}, a monograph (whole book) \cite{Kosiur01}, a
-  monograph/whole book in a series (see 2a in spec. document)
-  \cite{Harel79}, a divisible-book such as an anthology or compilation
-  \cite{Editor00} followed by the same example, however we only output
-  the series if the volume number is given \cite{Editor00a} (so
-  Editor00a's series should NOT be present since it has no vol. no.),
-  a chapter in a divisible book \cite{Spector90}, a chapter in a
-  divisible book in a series \cite{Douglass98}, a multi-volume work as
-  book \cite{Knuth97}, a couple of articles in a proceedings (of a
-  conference, symposium, workshop for example) (paginated proceedings
-  article) \cite{Andler79, Hagerup1993}, a proceedings article with
-  all possible elements \cite{Smith10}, an example of an enumerated
-  proceedings article \cite{VanGundy07}, an informally published work
-  \cite{Harel78}, a couple of preprints \cite{Bornmann2019,
-    AnzarootPBM14}, a doctoral dissertation \cite{Clarkson85}, a
-  master's thesis: \cite{anisi03}, an online document / world wide web
-  resource \cite{Thornburg01, Ablamowicz07, Poker06}, a video game
-  (Case 1) \cite{Obama08} and (Case 2) \cite{Novak03} and \cite{Lee05}
-  and (Case 3) a patent \cite{JoeScientist001}, work accepted for
-  publication \cite{rous08}, 'YYYYb'-test for prolific author
-  \cite{SaeediMEJ10} and \cite{SaeediJETC10}. Other cites might
-  contain 'duplicate' DOI and URLs (some SIAM articles)
-  \cite{Kirschmer:2010:AEI:1958016.1958018}. Boris / Barbara Beeton:
-  multi-volume works as books \cite{MR781536} and \cite{MR781537}. A
-  couple of citations with DOIs:
-  \cite{2004:ITE:1009386.1010128,Kirschmer:2010:AEI:1958016.1958018}. Online
-  citations: \cite{TUGInstmem, Thornburg01, CTANacmart}.
-  Artifacts: \cite{R} and \cite{UMassCitations}.
-
-\section{Acknowledgments}
-
-Identification of funding sources and other support, and thanks to
-individuals and groups that assisted in the research and the
-preparation of the work should be included in an acknowledgment
-section, which is placed just before the reference section in your
-document.
-
-This section has a special environment:
-\begin{verbatim}
-  \begin{acks}
-  ...
-  \end{acks}
-\end{verbatim}
-so that the information contained therein can be more easily collected
-during the article metadata extraction phase, and to ensure
-consistency in the spelling of the section heading.
-
-Authors should not prepare this section as a numbered or unnumbered {\verb|\section|}; please use the ``{\verb|acks|}'' environment.
-
-\section{Appendices}
-
-If your work needs an appendix, add it before the
-``\verb|\end{document}|'' command at the conclusion of your source
-document.
-
-Start the appendix with the ``\verb|appendix|'' command:
-\begin{verbatim}
-  \appendix
-\end{verbatim}
-and note that in the appendix, sections are lettered, not
-numbered. This document has two appendices, demonstrating the section
-and subsection identification method.
-
-\section{Multi-language papers}
-
-Papers may be written in languages other than English or include
-titles, subtitles, keywords and abstracts in different languages (as a
-rule, a paper in a language other than English should include an
-English title and an English abstract).  Use \verb|language=...| for
-every language used in the paper.  The last language indicated is the
-main language of the paper.  For example, a French paper with
-additional titles and abstracts in English and German may start with
-the following command
-\begin{verbatim}
-\documentclass[sigconf, language=english, language=german,
-               language=french]{acmart}
-\end{verbatim}
-
-The title, subtitle, keywords and abstract will be typeset in the main
-language of the paper.  The commands \verb|\translatedXXX|, \verb|XXX|
-begin title, subtitle and keywords, can be used to set these elements
-in the other languages.  The environment \verb|translatedabstract| is
-used to set the translation of the abstract.  These commands and
-environment have a mandatory first argument: the language of the
-second argument.  See \verb|sample-sigconf-i13n.tex| file for examples
-of their usage.
-
-\section{SIGCHI Extended Abstracts}
-
-The ``\verb|sigchi-a|'' template style (available only in \LaTeX\ and
-not in Word) produces a landscape-orientation formatted article, with
-a wide left margin. Three environments are available for use with the
-``\verb|sigchi-a|'' template style, and produce formatted output in
-the margin:
-\begin{description}
-\item[\texttt{sidebar}:]  Place formatted text in the margin.
-\item[\texttt{marginfigure}:] Place a figure in the margin.
-\item[\texttt{margintable}:] Place a table in the margin.
-\end{description}
+In conclusion, while each of these technologies faces its own set 
+of engineering and scientific challenges, their combined potential
+is immense. They offer not just incremental improvements but 
+pathways to fundamentally reshape how information is processed 
+and stored. Whether through the direct performance enhancement of 
+CNFETs, the ultra-low-power logic of spintronics, or the 
+architectural revolution promised by memristors, the future of 
+computing will undoubtedly be a fascinating interplay of these 
+emerging paradigms, leading to more intelligent, efficient, and 
+powerful computational systems.
 
 %%
 %% The acknowledgments section is defined using the "acks" environment
@@ -981,7 +883,16 @@ the margin:
 %% identification of the section in the article metadata, and the
 %% consistent spelling of the heading.
 \begin{acks}
-To Robert, for the bagels and explaining CMYK and color spaces.
+This work would not have been possible without the support of Professor Srivastava. None of this paper could 
+have come together without your mentorship. Thank you for giving me the opportunity to
+research this topic as well. Without this class, I would have never read into this field with such 
+depth and it has truly provided me with some valuable insight in addition to skills on 
+how to read and analyze papers. 
+
+Of course, this paper would also not have been possible without my classmates. I can say 
+confidently that my paper would be nowhere near where it is now had it not 
+been for my classmates support and comradery. I have also learned so much through 
+each of their presentations. 
 \end{acks}
 
 %%
@@ -990,40 +901,6 @@ To Robert, for the bagels and explaining CMYK and color spaces.
 \bibliographystyle{ACM-Reference-Format}
 \bibliography{refs}
 
-
-%%
-%% If your work has an appendix, this is the place to put it.
-\appendix
-
-\section{Research Methods}
-
-\subsection{Part One}
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
-malesuada, quam in pulvinar varius, metus nunc fermentum urna, id
-sollicitudin purus odio sit amet enim. Aliquam ullamcorper eu ipsum
-vel mollis. Curabitur quis dictum nisl. Phasellus vel semper risus, et
-lacinia dolor. Integer ultricies commodo sem nec semper.
-
-\subsection{Part Two}
-
-Etiam commodo feugiat nisl pulvinar pellentesque. Etiam auctor sodales
-ligula, non varius nibh pulvinar semper. Suspendisse nec lectus non
-ipsum convallis congue hendrerit vitae sapien. Donec at laoreet
-eros. Vivamus non purus placerat, scelerisque diam eu, cursus
-ante. Etiam aliquam tortor auctor efficitur mattis.
-
-\section{Online Resources}
-
-Nam id fermentum dui. Suspendisse sagittis tortor a nulla mollis, in
-pulvinar ex pretium. Sed interdum orci quis metus euismod, et sagittis
-enim maximus. Vestibulum gravida massa ut felis suscipit
-congue. Quisque mattis elit a risus ultrices commodo venenatis eget
-dui. Etiam sagittis eleifend elementum.
-
-Nam interdum magna at lectus dignissim, ac dignissim lorem
-rhoncus. Maecenas eu arcu ac neque placerat aliquam. Nunc pulvinar
-massa et mattis lacinia.
 
 \end{document}
 \endinput
